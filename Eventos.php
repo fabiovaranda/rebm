@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>REBM</title>
+        <?php
+		 include('importarBibliotecas.php');
+		?>
+    </head>
+    <body>
+        <?php
+        include('menu.php');
+        include('verEventos.php');
+        include('footer.php');
+        ?>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <head>  
+        <title>Objetivos</title>
+        <?php
+         include('importarBibliotecas.php');
+        ?>
+    </head>
+    <body>
+        <?php
+        include('menu.php');
+        ?>
+	<?php
+        include('Objetivos.html');
+        ?>
+        <?php
+        include('footer.php');
+        ?>
+    </body>
+</html>
