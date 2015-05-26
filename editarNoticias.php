@@ -5,12 +5,12 @@ include('menu.php');
 <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script>
         tinymce.init({
-					selector:'textarea'
-					//plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
-
-					
-					});
+			//selector:'textarea'
+            mode : "specific_textareas",
+            editor_selector : "myTextEditor"
+			});
 </script>
+
 <script>
     function confirmacaoEliminacao(i){
         if(confirm('Tem a certeza que deseja eliminar esta Notícia?')){
@@ -123,7 +123,7 @@ if(isset($_POST['nomeP'])){
                         <td colspan='3'>
                             <br/>
                             Texto
-                            <textarea  id='text-input".$row['id']."' name='textoA' cols='153' rows='6' placeholder='Texto'>".$row['texto']."</textarea>
+                            <textarea  id='text-input".$row['id']."' name='textoA' class='myTextEditor' cols='153' rows='6' placeholder='Texto'>".$row['texto']."</textarea>
                             <br/><br/>
                         </td>
                     </tr>

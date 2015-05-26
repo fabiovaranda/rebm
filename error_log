@@ -1886,3 +1886,4 @@
 [15-Apr-2015 03:34:48 Europe/Lisbon] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/empregab/public_html/importarBibliotecas.php:1) in /home/empregab/public_html/importarBibliotecas.php on line 1
 [27-Apr-2015 12:49:59 Europe/Lisbon] PHP Warning:  session_start(): open(/tmp/sess_2eef63911a96613c5d5f37ef1405638d, O_RDWR) failed: Permission denied (13) in /home/empregab/public_html/importarBibliotecas.php on line 1
 [27-Apr-2015 12:49:59 Europe/Lisbon] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/empregab/public_html/importarBibliotecas.php:1) in /home/empregab/public_html/importarBibliotecas.php on line 1
+[26-May-2015 16:20:25 Europe/Lisbon] PHP Fatal error:  Call to undefined method DataAccess::getUtentesPorPagina() in /home/empregab/public_html/gerirUtentes.php on line 60

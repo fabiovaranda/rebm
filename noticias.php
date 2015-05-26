@@ -71,9 +71,9 @@
     }
     
 	function retirarPlicasAspas($txt){
-		$txt = str_replace('"','´', $txt);
-		$txt = str_replace("'",'´', $txt);
-		//echo "<script>alert('".$txt."')</script>";
+		//$txt = str_replace('"','´', $txt);
+		//$txt = str_replace("'",'´', $txt);
+        $txt = str_replace('"',"'", $txt);
 		return $txt;
 	}
 	
@@ -104,7 +104,7 @@
     </div>
 	
     <div class="column-group gutters">
-        <div class="large-70 medium-60 small-100">
+        <div class="large-70 medium-60 small-60">
             <div class="column-group gutters">
                 <div class="large-10"></div>
                 <div class="large-90">
@@ -113,6 +113,7 @@
                         <?php
                         if ($row['imagemNoticia'] != ""){
                             $tipoImagem = verificarImagem('fotosNoticias/'.$row['imagemNoticia']);
+							
                             if ($tipoImagem == 1)
                                 echo "<img src='fotosNoticias/".$row['imagemNoticia']."' width='150px'>";
                             else
@@ -129,7 +130,7 @@
                         $row = mysql_fetch_assoc($res);
                     ?>    
                 </div>
-                <div class="large-10"></div>
+                <div class="large-10">&nbsp;</div>
                 <div class="large-45">
                     <center>
                         <a href='noticia.php?i=<?php echo $row['id'] ?>'>
@@ -148,7 +149,7 @@
                     <b><?php echo $row['titulo']; ?></b>
                     <br><br>
                     <?php
-                        echo $row['textoApresentacao'];
+                        echo retirarPlicasAspas($row['textoApresentacao']);
                         $row = mysql_fetch_assoc($res);
                     ?>
                 </div>
@@ -172,16 +173,19 @@
                     <b><?php echo $row['titulo']; ?></b>
                     <br><br>
                     <?php
-                        echo $row['textoApresentacao'];
+                        echo retirarPlicasAspas($row['textoApresentacao']);
                     ?>
                 </div>
             </div>  
         </div>
-        <div class="large-30 medium-40 small-100" style='border: 0px solid;'>
+		
+		
+        <div class="large-30 medium-40 small-0" style='border: 0px solid;'>
             <nav class="ink-navigation large-100 align-right">
                 <ul class="menu vertical grey rounded shadowed">
 					
                     <?php
+					
 						$contador = 0;
 					 
                         while($row = mysql_fetch_assoc($res)){
@@ -198,10 +202,12 @@
 									  </li>";
 							}
                         }
+						
                     ?>
                 </ul>
             </nav>
         </div>
+		
     </div>
 
 

@@ -1,0 +1,19 @@
+<html>
+    <head>  
+        <title>Planos de Ação</title>
+        <?php
+         include('importarBibliotecas.php');
+        ?>
+    </head>
+    <body>
+        <?php
+        include('menu.php');
+        ?>
+	<?php
+        include('PlanosdeAcao.html');
+        ?>
+        <?php
+        include('footer.php');
+        ?>
+    </body>
+</html>

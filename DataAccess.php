@@ -428,7 +428,67 @@ class DataAccess{
         return $res;
         }
         
-	function getUtentes($nif, $nome, $idFrontOfficeSinalizador, $emailTecnico, $interesseProfissional, $Escolaridade, $situacaoEmprego,$estado){
+	function getUtentes($nif, $nome, $idFrontOfficeSinalizador, $emailTecnico, $interesseProfissional, 
+				$Escolaridade, $situacaoEmprego, $estado/*, $pagina*/){
+		$this->connect();
+		$idTecnico = -1;
+		if ($emailTecnico != "")
+		{
+			
+			$query = "select id from tecnicos where email = '$emailTecnico'";
+		
+			$res = $this->execute($query); 
+			if (mysql_num_rows($res)>0){
+				$row = mysql_fetch_array($res);
+				$idTecnico = $row[0];
+			}
+		}
+	
+		$query = "select *, U.id as a from utentes U where estado=$estado ";
+		
+		if ($nome != "")
+			$query .= " and nome like '%$nome%' ";
+		if ($idFrontOfficeSinalizador != "" && $idFrontOfficeSinalizador != "-1")
+			$query .= " and idFrontOfficeSinalizador = $idFrontOfficeSinalizador ";
+		if ($nif != "")
+			$query .= " and NIF = $nif ";
+			
+		if ($interesseProfissional != -1 && $interesseProfissional != "")
+			$query .= " and (interesseProfissional1 = $interesseProfissional or interesseProfissional2 = $interesseProfissional or interesseProfissional3 = $interesseProfissional) ";
+		if ($Escolaridade != -1 && $Escolaridade != "")
+			$query .= " and idHabilitacoes = $Escolaridade ";
+			
+		switch ($situacaoEmprego)
+		{
+			case 1:
+			$query .= " and empregado = 1";
+			break;
+			case 2: 
+			$query .= " and empregado =  0";
+			break;
+			case 3: 
+			$query .= " and Estudante = 1";
+			break;
+			case 4:
+			$query .= " and outraSituacao = 1";
+			break;
+			default:
+			break;
+		}
+		if ($idTecnico != -1)
+			$query .= " and idTecnico = $idTecnico ";
+			
+		//$inicio = ($pagina*10) - 10;		
+		//$query .= " order by U.nome asc limit $inicio, 10";
+		$query .= " order by U.nome asc";
+		//echo $query;
+		$res = $this->execute($query); 
+		$this->disconnect();
+		return $res;
+	}
+	
+	function getUtentesPorPagina($nif, $nome, $idFrontOfficeSinalizador, $emailTecnico, $interesseProfissional, $Escolaridade, 
+									$situacaoEmprego,$estado, $pagina){
 		$this->connect();
 		$idTecnico = -1;
 		if ($emailTecnico != "")
@@ -478,8 +538,19 @@ class DataAccess{
 			$query .= " and idTecnico = $idTecnico ";
 		
 		$query .= " order by U.nome asc ";
-		//echo $query;
+		$queryAux = $query;
+		
+		$pagina = ($pagina-1) * 15;
+		$query .= " limit  $pagina, 15 ";
+		
 		$res = $this->execute($query); 
+		/*
+		if ( mysql_num_rows($res) == 0){ //se a página não devolver resultados, mostra a primeira página
+			$pagina = 0;
+			$queryAux .= " limit  $pagina, 15 ";
+			$res = $this->execute($queryAux); 
+		}*/
+		
 		$this->disconnect();
 		return $res;
 	}

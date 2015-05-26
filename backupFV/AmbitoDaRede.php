@@ -1,0 +1,19 @@
+<html>
+    <head>  
+        <title>Âmbito da Rede</title>
+        <?php
+         include('importarBibliotecas.php');
+        ?>
+    </head>
+    <body>
+        <?php
+        include('menu.php');
+        ?>
+	<?php
+        include('AmbitoDaRede.html');
+        ?>
+        <?php
+        include('footer.php');
+        ?>
+    </body>
+</html>

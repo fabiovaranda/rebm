@@ -1,0 +1,19 @@
+<html>
+    <head>  
+        <title>REBM</title>
+        <?php
+         include('importarBibliotecas.php');
+        ?>
+    </head>
+    <body>
+        <?php
+        include('menu.php');
+        ?>
+	<?php
+        include('respostas.html');
+        ?>
+        <?php
+        include('footer.php');
+        ?>
+    </body>
+</html>

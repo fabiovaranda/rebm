@@ -155,7 +155,7 @@ function verFormEditarUtente(){
 						<td>
 							<label>Concelho</label>	
 						</td>
-						<td colspan='2'>					
+						<td>					
 								<select name='Concelho' style='width:90%'>
 									<option value='-1'></option>";
 									$resConc = $da->getConcelhos();
@@ -181,14 +181,16 @@ function verFormEditarUtente(){
 									}
 					   echo "</select>
 						</td>
-						<td colspan='3'>
-							<label>Data de Nascimento</label>
+						<td colspan='4'>
+							<label>Data de Nascimento</label> 
+						
 							";
 							if ($row->dataNascimento != '0000-00-00')
-								echo "<input type='text' name='dataNascimento' class='ink-datepicker' style='width:55%' placeholder='aaaa-mm-dd' value='$row->dataNascimento'/> ";
+								echo "<input type='text' name='dataNascimento' class='ink-datepicker' style='width:30%' placeholder='aaaa-mm-dd' value='$row->dataNascimento'/> ";
 							else
-								echo "<input type='text' name='dataNascimento' class='ink-datepicker' style='width:55%' placeholder='aaaa-mm-dd' /> ";
+								echo "<input type='text' name='dataNascimento' class='ink-datepicker' style='width:30%' placeholder='aaaa-mm-dd' /> ";
 							echo "
+							 <font size='3'>(aaaa-mm-dd)</font>
 						</td>
 					</tr>
 					<tr>

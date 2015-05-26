@@ -3,7 +3,10 @@ include('importarBibliotecas.php');
 ?>
 <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script>
-        tinymce.init({selector:'textarea'});
+        tinymce.init({
+            mode : "specific_textareas",
+            editor_selector : "myTextEditor"
+            });
 </script>
 
 <?php
@@ -66,7 +69,7 @@ function getTipo($x){
                     <tr>
                         <td colspan='3'>
                             Texto 
-                            <textarea  id='text-input' name='texto' cols='153' rows='6' placeholder='Texto'></textarea>
+                            <textarea  id='text-input' name='texto' class='myTextEditor' cols='153' rows='6' placeholder='Texto'></textarea>
                         </td>
                     </tr>
                     <tr>
